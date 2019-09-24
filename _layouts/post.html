@@ -3,13 +3,14 @@ layout: default
 author: slyboots
 ---
 
-<h3>{{ page.title }}</h3>
-<i>{{ date }}</i>
+<h1>{{ page.title }}</h1>
 
-<b>I Learned:</b>
+<h3>I Learned:</h3>
 
 <ul>
 {% for item in page.things %}
     <li>{{ item }}</li>
 {% endfor %}
 </ul>
+
+<i>{{ page.date | date_to_string }}</i>

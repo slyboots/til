@@ -9,7 +9,8 @@ title: Stuff
 {% for post in site.posts %}
   <li>
     <a href="{{ post.url }}"><b>{{ post.title }}</b></a>
-    <blockquote>{{ post.excerpt }}</blockquote>
+    <br />
+    <small><i>{{ post.date | date_to_string }}</i><small>
   </li>
 {% endfor %}
 </ul>
