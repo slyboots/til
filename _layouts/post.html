@@ -1,0 +1,15 @@
+---
+layout: default
+author: slyboots
+---
+
+<h3>{{ page.title }}</h3>
+<i>{{ date }}</i>
+
+<b>I Learned:</b>
+
+<ul>
+{% for item in page.things %}
+    <li>{{ item }}</li>
+{% endfor %}
+</ul>
