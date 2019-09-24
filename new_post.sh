@@ -13,7 +13,7 @@ else
     postfilename="${postdate}-${postname}.md";
 
     posttitle=$(echo "$title" | sed 's/.*/\L&/; s/[a-z]*/\u&/g');
-    posttemplate="---\nlayout: post\ntitle: \"${posttitle}\"\n---\n\n# {{date}}\n\n__IL:__\n";
+    posttemplate="---\nlayout: post\ntitle: \"${posttitle}\"\nstuff:\n\t-\n---\n\n";
 
     echo -e "${posttemplate}" > "_posts/$postfilename";
 
