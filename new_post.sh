@@ -1,6 +1,6 @@
 #! /usr/local/bin/bash
 
-if [[ ! "$#" -gt 1 ]]; then
+if [[ ! "$#" -ge 1 ]]; then
     echo "No title provided";
 else
     if [[ ! -d _posts ]]; then
