@@ -3,7 +3,7 @@ site.url: https://slyboots.github.io/til
 
 defaults:
   - scope:
-    path: ""
-    type: "posts"
+      path: ""
+      type: "posts"
     values:
       layout: "post"
