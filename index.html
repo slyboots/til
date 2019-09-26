@@ -8,9 +8,10 @@ title: Stuff
 <ul>
 {% for post in site.posts %}
   <li>
-    <a href="{{ post.url | absolute_url }}"><b>{{ post.title }}</b></a>
-    <br />
-    <small><i>{{ post.date | date_to_string }}</i></small>
+    <a href="{{ post.url | absolute_url }}">
+      <i>{{ post.date | date: "%Y-%m-%d" }}</i>:
+      <b>{{ post.title }}</b>
+    </a>
   </li>
 {% endfor %}
 </ul>
