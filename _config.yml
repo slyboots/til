@@ -1,2 +1,9 @@
 theme: jekyll-theme-minimal
 site.url: https://slyboots.github.io/til
+
+defaults:
+  - scope:
+    path: ""
+    type: "posts"
+    values:
+      layout: "post"
