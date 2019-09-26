@@ -1,0 +1,56 @@
+#! /usr/local/bin/bash
+
+POSTS_DIR="./_posts";
+
+function __edit_post {
+    PS3="Select post: ";
+
+    # get available posts for editing
+    posts=($(ls $POSTS_DIR));
+    posts+=("Quit");
+
+    select post in "${posts[@]}";
+    do
+        case $post in
+            "Quit")
+                break;
+                ;;
+            *)
+                vim "$POSTS_DIR/$post";
+                break;
+                ;;
+        esac
+    done
+}
+
+function main {
+    # primary menu function
+    PS3="Action: ";
+
+    #OPTIONS=("New" "Edit" "Quit");
+    OPTIONS=("Edit" "Quit");
+
+    select opt in "${OPTIONS[@]}"
+    do
+        case $opt in
+            "New")
+                clear;
+                echo "new";
+                break;
+                ;;
+            "Edit")
+                clear;
+                __edit_post;
+                break;
+                ;;
+            "Quit")
+                break;
+                ;;
+            *)
+                break;
+                ;;
+        esac
+    done
+}
+
+__edit_post "$@"; exit
