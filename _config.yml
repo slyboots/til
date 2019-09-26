@@ -1,5 +1,6 @@
 theme: jekyll-theme-minimal
-site.url: https://slyboots.github.io/til
+url: https://slyboots.github.io
+baseurl: "/til"
 
 defaults:
   - scope:
