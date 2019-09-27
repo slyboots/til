@@ -1,5 +1,5 @@
 start:
 	bundle exec jekyll serve
 
-publish:
+push:
 	git add . && git commit && git push
