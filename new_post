@@ -1,26 +1,33 @@
 #! /usr/local/bin/bash
 
+HELPSTR="Usage: ./new_post TITLE [DATE]\nExamples:\n\t./new_post \"Random Title\"\n\t./new_post \"Another title\" \"2019-10-10\"\n";
+
+if [[ ! -d _posts ]]; then
+    mkdir _posts;
+fi
+
 if [[ ! "$#" -ge 1 ]]; then
-    echo "No title provided";
+    echo "Invalid arguments";
+    echo -e "$HELPSTR";
 else
-    if [[ ! -d _posts ]]; then
-        mkdir _posts;
+    if [[ "$@" == *"-h" ]]; then
+        echo -e "$HELPSTR";
+    else
+        # get title for post
+        title="$1";
+
+        # use date provided for post otherwise default to current date
+        currentdate=$(date +%Y-%m-%d);
+        postdate="${2:-$currentdate}";
+
+        postname=$(echo "$title" | tr '[:upper:]' '[:lower:]' | sed 's/\s/-/g');
+        postfilename="${postdate}-${postname}.md";
+
+        posttitle=$(echo "$title" | sed 's/.*/\L&/; s/[a-z]*/\u&/g');
+        posttemplate="---\ntitle: \"${posttitle}\"\nthings:\n    -\n---\n\n";
+
+        echo -e "${posttemplate}" > "_posts/$postfilename";
+
+        vim "_posts/$postfilename";
     fi
-    # get title for post
-    title="$1";
-
-    # use date provided for post otherwise default to current date
-    currentdate=$(date +%Y-%m-%d);
-    postdate="${2:-$currentdate}";
-
-    postname=$(echo "$title" | tr '[:upper:]' '[:lower:]' | sed 's/\s/-/g');
-    postfilename="${postdate}-${postname}.md";
-
-    posttitle=$(echo "$title" | sed 's/.*/\L&/; s/[a-z]*/\u&/g');
-    posttemplate="---\ntitle: \"${posttitle}\"\nthings:\n    -\n---\n\n";
-
-    echo -e "${posttemplate}" > "_posts/$postfilename";
-
-    vim "_posts/$postfilename";
-
 fi
